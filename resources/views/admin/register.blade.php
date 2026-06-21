@@ -5,33 +5,52 @@
 @section('auth_content')
 <main class="auth-page">
     <section class="auth-card">
-        <a class="auth-brand" href="{{ route('admin') }}"><span class="brand-icon"><i class="bi bi-grid-1x2-fill"
+        <a class="auth-brand" href="{{ route('admin.home') }}"><span class="brand-icon"><i class="bi bi-grid-1x2-fill"
                     aria-hidden="true"></i></span><span><strong>adminHMD</strong><small>Create your adminHMD
                     account.</small></span></a>
-        <div class="auth-visual"><img src="{{ asset('admin_assets/images/png/dasher-ui-bootstrap-5.jpg') }}"
-                alt="adminHMD dashboard interface"></div>
-        <form class="needs-validation" novalidate>
+        <form action="{{route('admin.user')}}" method="POST" class="needs-validation" novalidate>
+            @csrf
             <div class="mb-4">
                 <p class="eyebrow mb-1">Secure Access</p>
                 <h1 class="h3 mb-1">Register</h1>
                 <p class="text-muted mb-0">Create your adminHMD account.</p>
             </div>
             <div class="mb-3"><label class="form-label" for="registerName">Full name</label><input class="form-control"
-                    id="registerName" type="text" required>
-                <div class="invalid-feedback">Full name is required.</div>
+                    id="registerName" type="text" name="name" required>
+                @error('name')
+                <span class="text-danger bg-danger">{{$message}}</span>
+                @enderror
             </div>
             <div class="mb-3"><label class="form-label" for="registerEmail">Email address</label><input
-                    class="form-control" id="registerEmail" type="email" required>
-                <div class="invalid-feedback">Enter a valid email.</div>
+                    class="form-control" id="registerEmail" type="email" name="email" required>
+                @error('email')
+                <span class="text-danger bg-danger">{{$message}}</span>
+                @enderror
+            </div>
+            <div class="col-md-12 mb-3"><label class="form-label" for="role">Role</label><select class="form-select"
+                    id="role" required>
+                    <option value="">Choose role</option>
+                    <option value="admin">Admin</option>
+                    <option value="instructor">Instructor</option>
+                    <option value="student">Student</option>
+                </select>
+                <div class="invalid-feedback">Choose a role.</div>
             </div>
             <div class="mb-3"><label class="form-label" for="registerPassword">Password</label><input
-                    class="form-control" id="registerPassword" type="password" minlength="6" required>
-                <div class="invalid-feedback">Password must be at least 6 characters.</div>
+                    class="form-control" id="registerPassword" name="password" type="password" minlength="6" required>
+                @error('password')
+                <span class="text-danger bg-danger">{{$message}}</span>
+                @enderror
             </div>
-            <div class="form-check mb-4"><input class="form-check-input" type="checkbox" id="terms" required><label
-                    class="form-check-label" for="terms">I agree to the terms</label>
-                <div class="invalid-feedback">You must agree before continuing.</div>
+
+            <div class="mb-3"><label class="form-label" for="registerPassword">Re-type Password</label><input
+                    class="form-control" id="registerPassword" name="password_confirmation" type="password"
+                    minlength="6" required>
+                @error('password')
+                <span class="text-danger bg-danger">{{$message}}</span>
+                @enderror
             </div>
+
             <button class="btn btn-primary w-100" type="submit"><i class="bi bi-person-plus" aria-hidden="true"></i>
                 Create Account</button>
         </form>
@@ -43,6 +62,5 @@
 
 
 
-    ///asajfvsjvhjsv
 </main>
 @endsection

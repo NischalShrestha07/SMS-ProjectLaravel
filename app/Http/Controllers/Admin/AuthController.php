@@ -60,9 +60,10 @@ class AuthController extends Controller
     {
         return view('admin.alerts');
     }
-    public function addUser()
+    public function addUser(Request $request)
     {
-        return view('admin.add-user');
+        // return view('admin.add-user');
+        return $request;
     }
     public function blank()
     {

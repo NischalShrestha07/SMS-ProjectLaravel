@@ -4,8 +4,7 @@
         <div class="row">
             <div class="col-20 align-self-center">
                 <div class="site-logo">
-                    <a href="{{ route('home') }}"><img src="{{ asset('frontend_assets/img/logo.png') }}"
-                            alt=""></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('frontend_assets/img/logo.png') }}" alt=""></a>
                 </div>
             </div>
             <!--- END Col -->
@@ -44,8 +43,8 @@
             <!--- END Col -->
 
             <div class="col-20 d-none d-xl-block text-end align-self-center">
-                <a href="#" class="header-btn">Sign In</a>
-                <a href="{{ route('contact') }}" class="btn_one">Sign Up</a>
+                <a href="{{route('login')}}" class="header-btn">Sign In</a>
+                <a href="{{ route('register') }}" class="btn_one">Sign Up</a>
             </div>
             <!--- END Col -->
 

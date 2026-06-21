@@ -14,8 +14,8 @@
             </form>
 
             <div class="navbar-actions ms-auto">
-                <button class="icon-button theme-toggle" type="button" data-theme-toggle
-                    aria-label="Switch color theme" title="Switch color theme">
+                <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"
+                    title="Switch color theme">
                     <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
                 </button>
                 <div class="dropdown">
@@ -28,15 +28,15 @@
                         <div class="dropdown-header fw-bold text-body">
                             Notifications
                         </div>
-                        <a class="dropdown-item" href="{{ route('users') }}">
+                        <a class="dropdown-item" href="{{ route('admin.users') }}">
                             <span class="notification-title">New user registered</span>
                             <span class="notification-time">4 minutes ago</span>
                         </a>
-                        <a class="dropdown-item" href="{{ route('charts') }}">
+                        <a class="dropdown-item" href="{{ route('admin.charts') }}">
                             <span class="notification-title">Revenue target reached</span>
                             <span class="notification-time">32 minutes ago</span>
                         </a>
-                        <a class="dropdown-item" href="{{ route('settings') }}">
+                        <a class="dropdown-item" href="{{ route('admin.settings') }}">
                             <span class="notification-title">Security review completed</span>
                             <span class="notification-time">1 hour ago</span>
                         </a>
@@ -52,10 +52,10 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
-                            <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+                            <a class="dropdown-item" href="{{ route('admin.profile') }}">Profile</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('settings') }}">Account settings</a>
+                            <a class="dropdown-item" href="{{ route('admin.settings') }}">Account settings</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
