@@ -16,38 +16,39 @@
                 <p class="text-muted mb-0">Create your adminHMD account.</p>
             </div>
             <div class="mb-3"><label class="form-label" for="registerName">Full name</label><input class="form-control"
-                    id="registerName" type="text" name="name" required>
+                    value="{{old('name')}}" id="registerName" type="text" name="name" placeholder="Full Name" required>
                 @error('name')
-                <span class="text-danger bg-danger">{{$message}}</span>
+                <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>
             <div class="mb-3"><label class="form-label" for="registerEmail">Email address</label><input
-                    class="form-control" id="registerEmail" type="email" name="email" required>
+                    class="form-control" id="registerEmail" type="email" name="email" value="{{old('email')}}"
+                    placeholder="Email Address" required>
                 @error('email')
-                <span class="text-danger bg-danger">{{$message}}</span>
+                <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>
             <div class="col-md-12 mb-3"><label class="form-label" for="role">Role</label><select class="form-select"
-                    id="role" required>
+                    name="role" id="role" required>
                     <option value="">Choose role</option>
-                    <option value="admin">Admin</option>
                     <option value="instructor">Instructor</option>
                     <option value="student">Student</option>
                 </select>
                 <div class="invalid-feedback">Choose a role.</div>
             </div>
             <div class="mb-3"><label class="form-label" for="registerPassword">Password</label><input
-                    class="form-control" id="registerPassword" name="password" type="password" minlength="6" required>
+                    class="form-control" id="registerPassword" placeholder="Password" name="password" type="password"
+                    minlength="6" required>
                 @error('password')
-                <span class="text-danger bg-danger">{{$message}}</span>
+                <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>
 
             <div class="mb-3"><label class="form-label" for="registerPassword">Re-type Password</label><input
-                    class="form-control" id="registerPassword" name="password_confirmation" type="password"
-                    minlength="6" required>
+                    class="form-control" id="registerPassword" placeholder="Re-type Password"
+                    name="password_confirmation" type="password" minlength="6" required>
                 @error('password')
-                <span class="text-danger bg-danger">{{$message}}</span>
+                <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>
 
