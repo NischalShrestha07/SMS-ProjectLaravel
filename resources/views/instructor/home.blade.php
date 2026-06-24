@@ -2,7 +2,7 @@
 
 @section('title', 'Index')
 
-@section('content')
+@section('instructor_auth_content')
 <div class="admin-shell">
 
 

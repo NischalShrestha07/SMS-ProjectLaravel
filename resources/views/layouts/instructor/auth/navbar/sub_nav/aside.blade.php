@@ -1,17 +1,17 @@
 <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
     <div class="sidebar-header">
-        <a class="brand-mark" href="{{ route('admin.home') }}" aria-label="adminHMD dashboard">
+        <a class="brand-mark" href="{{ route('instructor.home') }}" aria-label="adminHMD dashboard">
             <span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span>
             <span class="brand-copy">
-                <span class="brand-title">Admin</span>
-                <span class="brand-subtitle">Admin Panel</span>
+                <span class="brand-title">Instructor</span>
+                <span class="brand-subtitle">Instructor Panel</span>
             </span>
         </a>
     </div>
 
     <nav class="sidebar-nav">
-        <a class="nav-link {{ request()->routeIs('admin.home') ? 'active' : '' }}" href="{{ route('admin.home') }}"
-            @if(request()->routeIs('admin.home')) aria-current="page" @endif>
+        <a class="nav-link {{ request()->routeIs('instructor.home') ? 'active' : '' }}" href="{{ route('instructor.home') }}"
+            @if(request()->routeIs('instructor.home')) aria-current="page" @endif>
             <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
             <span class="nav-text">Dashboard</span>
         </a>
@@ -25,8 +25,8 @@
             <span class="nav-icon"><i class="bi bi-person-plus" aria-hidden="true"></i></span>
             <span class="nav-text">Add User</span>
         </a>
-        <a class="nav-link {{ request()->routeIs('admin.profile') ? 'active' : '' }}"
-            href="{{ route('admin.profile') }}" @if (request()->routeIs('admin.profile')) aria-current="page" @endif>
+        <a class="nav-link {{ request()->routeIs('instructor.profile') ? 'active' : '' }}"
+            href="{{ route('instructor.profile') }}" @if (request()->routeIs('instructor.profile')) aria-current="page" @endif>
             <span class="nav-icon"><i class="bi bi-person-badge" aria-hidden="true"></i></span>
             <span class="nav-text">Profile</span>
         </a>
@@ -75,8 +75,8 @@
 
     <div class="sidebar-user">
         <img class="avatar-img avatar-md sidebar-user-avatar" src="{{ asset('admin_assets/images/avatar/avatar.jpg') }}"
-            alt="Admin Hasan" />
-        <strong>Admin Hasan</strong>
+            alt="Instructor Hasan" />
+        <strong>Instructor Hasan</strong>
         <small>Active Workspace</small>
     </div>
 

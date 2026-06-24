@@ -8,7 +8,7 @@
         <a class="auth-brand" href="{{ route('admin.home') }}"><span class="brand-icon"><i class="bi bi-grid-1x2-fill"
                     aria-hidden="true"></i></span><span><strong>adminHMD</strong><small>Create your adminHMD
                     account.</small></span></a>
-        <form action="{{route('admin.user')}}" method="POST" class="needs-validation" novalidate>
+        <form action="{{route('user.register')}}" method="POST" class="needs-validation" novalidate>
             @csrf
             <div class="mb-4">
                 <p class="eyebrow mb-1">Secure Access</p>

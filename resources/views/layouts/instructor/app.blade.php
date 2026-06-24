@@ -1,3 +1,22 @@
-<div>
-    <!-- Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. - Maria Skłodowska-Curie -->
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="adminHMD dashboard">
+    <title>@yield('title', 'Dashboard') | adminHMD</title>
+
+    <link rel="stylesheet" href="{{ asset('admin_assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_assets/css/style.css') }}">
+</head>
+
+<body>
+    @yield('instructor_auth_content')
+
+    <script src="{{ asset('admin_assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/js/main.js') }}"></script>
+</body>
+
+</html>

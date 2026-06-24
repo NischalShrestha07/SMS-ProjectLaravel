@@ -28,7 +28,9 @@ class AuthController extends Controller
         // return $request;
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $role = Auth::user();
+            //login
+            $role = Auth::user()->role;
+            // return $role;
 
             if ($role === 'admin') {
                 return redirect()->route('admin.home');
@@ -94,6 +96,7 @@ class AuthController extends Controller
     public function addUser(Request $request)
     {
         // return view('admin.add-user');
+        // return $request;
 
         $request->validate([
             'name' => 'required|string', ///Note Validation issue in name
@@ -101,6 +104,8 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed',
             'role' => 'required|string|in:instructor,student'
         ]);
+
+        // return $request;
 
         $user = new User();
         $user->name = $request->name;

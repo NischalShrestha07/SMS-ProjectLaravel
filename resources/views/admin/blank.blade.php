@@ -11,8 +11,8 @@
                 <a class="brand-mark" href="{{ route('admin') }}" aria-label="adminHMD dashboard">
                     <span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span>
                     <span class="brand-copy">
-                        <span class="brand-title">adminHMD</span>
-                        <span class="brand-subtitle">Admin Template</span>
+                        <span class="brand-title">Admin</span>
+                        <span class="brand-subtitle">Admin Panel</span>
                     </span>
                 </a>
             </div>

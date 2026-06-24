@@ -11,7 +11,7 @@
     <meta name="keywords"
         content="agency, business, corporate, creative, html5, modern, multipurpose, One Page, parallax, startup">
     <!-- SITE TITLE -->
-    <title>Eduleb - Education HTML Template</title>
+    <title>Eduleb - Education HTML </title>
     <!-- Latest Bootstrap min CSS -->
     <link rel="stylesheet" href="{{asset('frontend_assets/bootstrap/css/bootstrap.min.css')}}">
     <!-- Google Font -->
