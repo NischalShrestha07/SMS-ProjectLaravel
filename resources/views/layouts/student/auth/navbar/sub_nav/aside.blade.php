@@ -1,6 +1,6 @@
 <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
     <div class="sidebar-header">
-        <a class="brand-mark" href="{{ route('admin.home') }}" aria-label="adminHMD dashboard">
+        <a class="brand-mark" href="{{ route('student.home') }}" aria-label="adminHMD dashboard">
             <span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span>
             <span class="brand-copy">
                 <span class="brand-title">Student</span>
@@ -10,8 +10,8 @@
     </div>
 
     <nav class="sidebar-nav">
-        <a class="nav-link {{ request()->routeIs('admin.home') ? 'active' : '' }}" href="{{ route('admin.home') }}"
-            @if(request()->routeIs('admin.home')) aria-current="page" @endif>
+        <a class="nav-link {{ request()->routeIs('student.home') ? 'active' : '' }}" href="{{ route('student.home') }}"
+            @if(request()->routeIs('student.home')) aria-current="page" @endif>
             <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
             <span class="nav-text">Dashboard</span>
         </a>
@@ -20,13 +20,9 @@
             <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
             <span class="nav-text">Users</span>
         </a>
-        <a class="nav-link {{ request()->routeIs('admin.adduser') ? 'active' : '' }}"
-            href="{{ route('admin.adduser') }}" @if (request()->routeIs('admin.adduser')) aria-current="page" @endif>
-            <span class="nav-icon"><i class="bi bi-person-plus" aria-hidden="true"></i></span>
-            <span class="nav-text">Add User</span>
-        </a>
-        <a class="nav-link {{ request()->routeIs('admin.profile') ? 'active' : '' }}"
-            href="{{ route('admin.profile') }}" @if (request()->routeIs('admin.profile')) aria-current="page" @endif>
+
+        <a class="nav-link {{ request()->routeIs('student.profile') ? 'active' : '' }}"
+            href="{{ route('student.profile') }}" @if (request()->routeIs('student.profile')) aria-current="page" @endif>
             <span class="nav-icon"><i class="bi bi-person-badge" aria-hidden="true"></i></span>
             <span class="nav-text">Profile</span>
         </a>

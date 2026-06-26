@@ -29,20 +29,23 @@
                                     alt="adminHMD dashboard preview"></div>
                             <img class="avatar-img avatar-xl profile-photo"
                                 src="{{ asset('admin_assets/images/avatar/avatar.jpg') }}" alt="Admin Hasan">
-                            <h2 class="h5 mt-3 mb-1">Admin Hasan</h2>
+                            <h2 class="h5 mt-3 mb-1">{{ Auth::user()->name }}</h2>
                             <p class="text-muted mb-3">Product Administrator</p>
                             <div class="d-flex justify-content-center gap-2"><span
-                                    class="badge text-bg-primary">Admin</span><span
+                                    class="badge text-bg-primary">{{ Auth::user()->role }}</span><span
                                     class="badge text-bg-success">Verified</span></div>
                             <div class="info-list mt-4 text-start">
-                                <div><span>Email</span><strong>admin@example.com</strong></div>
-                                <div><span>Department</span><strong>Product Ops</strong></div>
-                                <div><span>Time Zone</span><strong>Asia/Dhaka</strong></div>
+                                <div><span>Email</span><strong>{{ Auth::user()->email }}</strong></div>
+                                <div><span>Role</span><strong>{{ Auth::user()->role }}</strong></div>
+                                <div><span>Created At</span><strong>{{ Auth::user()->created_at }}</strong></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-xl-8">
-                        <form class="panel needs-validation" novalidate>
+                        <form action="{{ route('admin.profile.update') }}" method="POST" class="panel needs-validation"
+                            novalidate>
+                            @csrf
+                            @method('PUT')
                             <div class="panel-header">
                                 <div>
                                     <h2 class="h5 mb-1 section-title"><i class="bi bi-person-gear"
@@ -52,17 +55,36 @@
                             </div>
                             <div class="row g-3">
                                 <div class="col-md-6"><label class="form-label" for="profileName">Name</label><input
-                                        class="form-control" id="profileName" type="text" value="Admin Hasan" required>
-                                    <div class="invalid-feedback">Name is required.</div>
+                                        class="form-control" id="profileName" name="name" type="text"
+                                        value="{{ Auth::user()->name }}" required>
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6"><label class="form-label" for="profileEmail">Email</label><input
-                                        class="form-control" id="profileEmail" type="email" value="admin@example.com"
-                                        required>
-                                    <div class="invalid-feedback">Enter a valid email.</div>
+                                        class="form-control" id="profileEmail" name="email" type="email"
+                                        value="{{ Auth::user()->email }}" required>
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
-                                <div class="col-12"><label class="form-label" for="profileBio">Bio</label>
-                                    <textarea class="form-control" id="profileBio" rows="5">Focused on clean admin workflows, reusable UI systems, and reliable operations.</textarea>
+
+                                <div class="col-md-6"><label class="form-label" for="profileEmail">Phone</label><input
+                                        class="form-control" id="profileEmail" name="phone" type="text"
+                                        value="{{ Auth::user()->phone }}">
+                                    @error('phone')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
+
+                                <div class="col-md-6"><label class="form-label" for="profileEmail">Password</label><input
+                                        name="password" class="form-control" id="profileEmail" type="text"
+                                        value="">
+                                    @error('password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                             </div>
                             <div class="d-flex justify-content-end mt-4"><button class="btn btn-primary" type="submit"><i
                                         class="bi bi-check2-circle" aria-hidden="true"></i> Save

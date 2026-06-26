@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -48,10 +49,16 @@ class AuthController extends Controller
     {
         return view('admin.register');
     }
+
+
     public function users()
     {
-        return view('admin.users');
+        $users=User::all();
+        return view('admin.users',compact('users'));
     }
+
+
+
     public function userDetails()
     {
         return view('admin.user-details');
@@ -65,10 +72,46 @@ class AuthController extends Controller
     {
         return view('admin.settings');
     }
+
     public function profile()
     {
-        return view('admin.profile');
+    $user=User::where('id',Auth::user()->id)->get();
+
+
+    return view('admin.profile',compact('user'));
     }
+
+
+    public function updateProfile(Request $request)
+    {
+        // return $request;
+        $request->validate([
+            'name'=>'required|string',
+            'email'=>'nullable|email',
+            'phone'=>'nullable'
+        ]);
+
+
+      User::where('id', Auth::user()->id)->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'password'=>Hash::make($request->password),
+
+        ]);
+        return redirect()->back();
+
+    }
+
+
+    public function logout(Request $request){
+        Auth::logout();
+    $request->session()->invalidate();
+Session::flush();
+
+    return redirect()->route('login')->with('success','Logged out successfully!');
+    }
+
     public function forms()
     {
         return view('admin.forms');
@@ -93,16 +136,24 @@ class AuthController extends Controller
     {
         return view('admin.alerts');
     }
+    public function create()
+    {
+        return view('admin.add-user');
+    }
+
+
+
     public function addUser(Request $request)
     {
         // return view('admin.add-user');
-        // return $request;
 
         $request->validate([
             'name' => 'required|string', ///Note Validation issue in name
             'email' => 'required|email',
+            'phone'=>'nullable|digits:10',
             'password' => 'required|string|confirmed',
-            'role' => 'required|string|in:instructor,student'
+            'status'=>'nullable|in:active,inactive',
+            'role' => 'required|string|in:admin,instructor,student'
         ]);
 
         // return $request;
@@ -110,6 +161,8 @@ class AuthController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->status = $request->status;
         $user->role = $request->role;
         $user->password = Hash::make($request->password);
         $user->save();

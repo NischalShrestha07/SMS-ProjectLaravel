@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Instructor;
+namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-    public function profile()
+public function profile()
     {
 ///bad implementations
     // $user=User::where('role','instructor')->get();
@@ -22,7 +22,7 @@ class AuthController extends Controller
     $user=User::where('id',Auth::user()->id)->get();
 
 
-    return view('instructor.profile',compact('user'));
+    return view('student.profile',compact('user'));
     }
 
 
@@ -48,6 +48,7 @@ class AuthController extends Controller
             'password'=>Hash::make($request->password),
 
         ]);
+
         return redirect()->back();
 
     }
@@ -57,7 +58,6 @@ class AuthController extends Controller
         Auth::logout();
     $request->session()->invalidate();
 Session::flush();
-
     return redirect()->route('login')->with('success','Logged out successfully!');
     }
 

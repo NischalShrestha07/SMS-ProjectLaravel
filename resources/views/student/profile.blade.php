@@ -1,10 +1,10 @@
-@extends('layouts.instructor.app')
+@extends('layouts.student.app')
 
 @section('title', 'Profile')
 
-@section('instructor_auth_content')
+@section('student_auth_content')
     <div class="admin-shell">
-        @include('layouts.instructor.auth.navbar.navbar')
+        @include('layouts.student.auth.navbar.navbar')
 
         <main class="dashboard-content">
             <div class="container-fluid px-3 px-lg-4 py-4">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-xl-8">
-                        <form action="{{route('instructor.profile.update')}}" method="POST" class="panel needs-validation" novalidate>
+                        <form action="{{route('student.profile.update')}}" method="POST" class="panel needs-validation" novalidate>
                             @csrf
                             @method('PUT')
                             <div class="panel-header">
@@ -89,7 +89,7 @@
             </div>
         </main>
 
-        @include('layouts.instructor.fotter.fotter')
+        @include('layouts.student.fotter.fotter')
     </div>
     </div>
 

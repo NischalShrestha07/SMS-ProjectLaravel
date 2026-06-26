@@ -20,8 +20,8 @@
             <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
             <span class="nav-text">Users</span>
         </a>
-        <a class="nav-link {{ request()->routeIs('admin.adduser') ? 'active' : '' }}"
-            href="{{ route('admin.adduser') }}" @if (request()->routeIs('admin.adduser')) aria-current="page" @endif>
+        <a class="nav-link {{ request()->routeIs('admin.create') ? 'active' : '' }}"
+            href="{{ route('admin.create') }}" @if (request()->routeIs('admin.create')) aria-current="page" @endif>
             <span class="nav-icon"><i class="bi bi-person-plus" aria-hidden="true"></i></span>
             <span class="nav-text">Add User</span>
         </a>

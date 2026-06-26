@@ -34,18 +34,22 @@ Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::get('/home', [Admin\HomeController::class, 'home'])->name('home');
     Route::get('/users', [Admin\AuthController::class, 'users'])->name('users');
+    Route::get('/user/add', [Admin\AuthController::class, 'create'])->name('create');
+
+    Route::post('/adduser', [Admin\AuthController::class, 'addUser'])->name('adduser');
+    Route::get('/profile', [Admin\AuthController::class, 'profile'])->name('profile');
+    Route::put('/profile/update', [Admin\AuthController::class, 'updateProfile'])->name('profile.update');
+
 
     Route::get('/user-details', [Admin\AuthController::class, 'userDetails'])->name('user-details');
     Route::get('/tables', [Admin\AuthController::class, 'tables'])->name('tables');
     Route::get('/settings', [Admin\AuthController::class, 'settings'])->name('settings');
-    Route::get('/profile', [Admin\AuthController::class, 'profile'])->name('profile');
     Route::get('/forms', [Admin\AuthController::class, 'forms'])->name('forms');
     Route::get('/forget-password', [Admin\AuthController::class, 'forgetPassword'])->name('forget-password');
     Route::get('/create-agent', [Admin\AuthController::class, 'createAgent'])->name('create-agent');
     Route::get('/components', [Admin\AuthController::class, 'components'])->name('components');
     Route::get('/charts', [Admin\AuthController::class, 'charts'])->name('charts');
     Route::get('/alerts', [Admin\AuthController::class, 'alerts'])->name('alerts');
-    Route::get('/adduser', [Admin\AuthController::class, 'addUser'])->name('adduser');
     Route::get('/blank', [Admin\AuthController::class, 'blank'])->name('blank');
     Route::get('/modals', [Admin\AuthController::class, 'modals'])->name('modals');
 });
@@ -57,12 +61,13 @@ Route::middleware('role:instructor')->prefix('instructor')->name('instructor.')-
     Route::get('/profile', [Instructor\AuthController::class, 'profile'])->name('profile');
     Route::put('/profile/update', [Instructor\AuthController::class, 'updateProfile'])->name('profile.update');
 
+    Route::get('/logout',[Instructor\AuthController::class,'logout'])->name('logout');
 
 
 
 
 
- Route::get('/users', [Admin\AuthController::class, 'users'])->name('users');
+    Route::get('/users', [Admin\AuthController::class, 'users'])->name('users');
 
     Route::get('/user-details', [Admin\AuthController::class, 'userDetails'])->name('user-details');
     Route::get('/tables', [Admin\AuthController::class, 'tables'])->name('tables');
@@ -86,10 +91,18 @@ Route::middleware('role:student')->prefix('student')->name('student.')->group(fu
     Route::get('/home', [Student\HomeController::class, 'home'])->name('home');
      Route::get('/users', [Admin\AuthController::class, 'users'])->name('users');
 
+
+
+         Route::get('/profile', [Student\AuthController::class, 'profile'])->name('profile');
+    Route::put('/profile/update', [Student\AuthController::class, 'updateProfile'])->name('profile.update');
+
+    Route::get('/logout',[Student\AuthController::class,'logout'])->name('logout');
+
+
+
     Route::get('/user-details', [Admin\AuthController::class, 'userDetails'])->name('user-details');
     Route::get('/tables', [Admin\AuthController::class, 'tables'])->name('tables');
     Route::get('/settings', [Admin\AuthController::class, 'settings'])->name('settings');
-    Route::get('/profile', [Admin\AuthController::class, 'profile'])->name('profile');
     Route::get('/forms', [Admin\AuthController::class, 'forms'])->name('forms');
     Route::get('/forget-password', [Admin\AuthController::class, 'forgetPassword'])->name('forget-password');
     Route::get('/create-agent', [Admin\AuthController::class, 'createAgent'])->name('create-agent');
