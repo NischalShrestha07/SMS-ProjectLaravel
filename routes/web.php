@@ -39,9 +39,17 @@ Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('/adduser', [Admin\AuthController::class, 'addUser'])->name('adduser');
     Route::get('/profile', [Admin\AuthController::class, 'profile'])->name('profile');
     Route::put('/profile/update', [Admin\AuthController::class, 'updateProfile'])->name('profile.update');
+    Route::get('/user-details/{id}', [Admin\AuthController::class, 'userDetailsShow'])->name('user-details.show');
+    Route::get('/user-details/edit/{id}', [Admin\AuthController::class, 'edit'])->name('user-details.edit');
+    Route::put('/user-details/update/{id}', [Admin\AuthController::class, 'update'])->name('user-details.update');
+
+    // Route::get('/user-details/{$id}', [Admin\AuthController::class, 'userDetails'])->name('user-details');
 
 
-    Route::get('/user-details', [Admin\AuthController::class, 'userDetails'])->name('user-details');
+
+
+
+
     Route::get('/tables', [Admin\AuthController::class, 'tables'])->name('tables');
     Route::get('/settings', [Admin\AuthController::class, 'settings'])->name('settings');
     Route::get('/forms', [Admin\AuthController::class, 'forms'])->name('forms');

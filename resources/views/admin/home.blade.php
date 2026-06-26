@@ -155,112 +155,54 @@
                     </div>
                     <a class="btn btn-outline-secondary btn-sm" href="{{ route('admin.users') }}">Manage Users</a>
                 </div>
-                <div class="table-responsive">
-                    <table class="table align-middle mb-0">
-                        <thead>
-                            <tr>
-                                <th scope="col">User</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Team</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Joined</th>
-                                <th scope="col" class="text-end">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-1.jpg"
-                                            alt="Sarah Ahmed">
-                                        <div>
-                                            <p class="fw-semibold mb-0">Sarah Ahmed</p>
-                                            <p class="text-muted small mb-0">sarah@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Admin</td>
-                                <td>Operations</td>
-                                <td><span class="badge text-bg-success">Active</span></td>
-                                <td>Jan 12, 2026</td>
-                                <td class="text-end"><a class="btn btn-light btn-sm"
-                                        href="{{ route('admin.user-details') }}">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-2.jpg"
-                                            alt="Rafi Khan">
-                                        <div>
-                                            <p class="fw-semibold mb-0">Rafi Khan</p>
-                                            <p class="text-muted small mb-0">rafi@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Manager</td>
-                                <td>Sales</td>
-                                <td><span class="badge text-bg-success">Active</span></td>
-                                <td>Feb 03, 2026</td>
-                                <td class="text-end"><a class="btn btn-light btn-sm"
-                                        href="{{ route('admin.user-details') }}">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-3.jpg"
-                                            alt="Nadia Islam">
-                                        <div>
-                                            <p class="fw-semibold mb-0">Nadia Islam</p>
-                                            <p class="text-muted small mb-0">nadia@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Editor</td>
-                                <td>Content</td>
-                                <td><span class="badge text-bg-warning">Pending</span></td>
-                                <td>Mar 18, 2026</td>
-                                <td class="text-end"><a class="btn btn-light btn-sm"
-                                        href="{{ route('admin.user-details') }}">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-4.jpg"
-                                            alt="Mina Torres">
-                                        <div>
-                                            <p class="fw-semibold mb-0">Mina Torres</p>
-                                            <p class="text-muted small mb-0">mina@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Viewer</td>
-                                <td>Finance</td>
-                                <td><span class="badge text-bg-secondary">Suspended</span></td>
-                                <td>Apr 07, 2026</td>
-                                <td class="text-end"><a class="btn btn-light btn-sm"
-                                        href="{{ route('admin.user-details') }}">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-5.jpg"
-                                            alt="Jon Oliver">
-                                        <div>
-                                            <p class="fw-semibold mb-0">Jon Oliver</p>
-                                            <p class="text-muted small mb-0">jon@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Analyst</td>
-                                <td>Data</td>
-                                <td><span class="badge text-bg-success">Active</span></td>
-                                <td>Apr 22, 2026</td>
-                                <td class="text-end"><a class="btn btn-light btn-sm"
-                                        href="{{ route('admin.user-details') }}">View</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                 <div class="table-responsive">
+                        <table class="table align-middle mb-0" id="usersTable" data-searchable-table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">User</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Joined</th>
+                                    <th scope="col" class="text-end">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $item)
+                                    <tr>
+
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                {{-- <img class="avatar-img avatar-sm"
+                                            src="{{ asset('admin_assets/images/avatar/avatar-1.jpg') }}"
+                                            alt="Sarah Ahmed" /> --}}
+                                                <div>
+                                                    <p class="fw-semibold mb-0">
+                                                        {{ $item->name }} </p>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{{ $item->email }} </td>
+                                        <td>{{ $item->phone }} </td>
+                                        <td>{{ $item->role }} </td>
+                                        <td>
+                                            <span class="badge text-bg-success">{{ $item->status }} </span>
+                                        </td>
+                                        <td>{{ $item->created_at }} </td>
+                                        <td class="text-end">
+                                            <a class="btn btn-light btn-sm"
+                                                href="{{ route('admin.user-details.show',$item->id) }}">View</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
             </section>
         </div>
     </main>

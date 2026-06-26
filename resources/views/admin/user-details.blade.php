@@ -21,9 +21,9 @@
                         </div>
                     </div>
                     <div class="heading-actions">
-                        <a class="btn btn-outline-secondary btn-sm" href="{{ route('users') }}"><i class="bi bi-arrow-left"
+                        <a class="btn btn-outline-secondary btn-sm" href="{{ route('admin.home') }}"><i class="bi bi-arrow-left"
                                 aria-hidden="true"></i>
-                            Back to Users</a><a class="btn btn-primary btn-sm" href="{{ route('add-user') }}"><i
+                            Back to Users</a><a class="btn btn-primary btn-sm" href="{{ route('admin.create') }}"><i
                                 class="bi bi-person-plus" aria-hidden="true"></i>
                             Add User</a>
                     </div>
@@ -39,25 +39,23 @@
                             <div class="profile-hero">
                                 <img class="avatar-img avatar-xl profile-photo"
                                     src="{{ asset('admin_assets/images/avatar/avatar-1.jpg') }}" alt="Sarah Ahmed" />
-                                <h2 class="h5 mb-1">Sarah Ahmed</h2>
+                                <h2 class="h5 mb-1">{{$user->name}} </h2>
                                 <p class="text-muted mb-3">
-                                    Senior Administrator
-                                </p>
-                                <span class="badge text-bg-success">Active Account</span>
+
+{{$user->role}}                                </p>
+                                <span class="badge text-bg-success">{{$user->status}} Account</span>
                             </div>
                             <div class="info-list mt-4 text-start">
                                 <div>
-                                    <span>Email</span><strong>sarah@example.com</strong>
+                                    <span>Email</span><strong>{{$user->email}}</strong>
                                 </div>
                                 <div>
-                                    <span>Phone</span><strong>+1 555 0184</strong>
+                                    <span>Phone</span><strong>{{$user->phone}}</strong>
                                 </div>
                                 <div>
-                                    <span>Team</span><strong>Operations</strong>
+                                    <span>Role</span><strong>{{$user->role}}</strong>
                                 </div>
-                                <div>
-                                    <span>Location</span><strong>New York, USA</strong>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -74,19 +72,19 @@
                                         access details.
                                     </p>
                                 </div>
-                                <button class="btn btn-primary btn-sm" type="button">
-                                    Edit User
+                                <button class="btn btn-primary btn-sm"  type="button">
+                                    <a class="text-white" href="{{route('admin.user-details.edit',$user->id)}}">Edit User</a>
                                 </button>
                             </div>
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <div class="mini-card">
-                                        <span>Role</span><strong>Admin</strong>
+                                        <span>Role</span><strong>{{$user->role}}</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mini-card">
-                                        <span>Last Login</span><strong>Today</strong>
+                                        <span>Joined Date</span><strong>{{$user->created_at}}</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-4">

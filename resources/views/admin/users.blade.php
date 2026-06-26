@@ -145,7 +145,7 @@
                                         <td>{{ $item->created_at }} </td>
                                         <td class="text-end">
                                             <a class="btn btn-light btn-sm"
-                                                href="{{ route('admin.user-details') }}">View</a>
+                                                href="{{ route('admin.user-details.show',$item->id) }}">View</a>
                                         </td>
                                     </tr>
                                 @endforeach

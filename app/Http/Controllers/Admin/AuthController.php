@@ -59,9 +59,19 @@ class AuthController extends Controller
 
 
 
-    public function userDetails()
+    public function userDetailsShow($id)
     {
-        return view('admin.user-details');
+        $user=User::find($id);
+
+        return view('admin.user-details',compact('user'));
+    }
+
+
+    public function edit($id)
+    {
+                $user=User::find($id);
+
+        return view('admin.edit',compact('user'));
     }
     public function tables()
     {
@@ -76,7 +86,6 @@ class AuthController extends Controller
     public function profile()
     {
     $user=User::where('id',Auth::user()->id)->get();
-
 
     return view('admin.profile',compact('user'));
     }
@@ -143,6 +152,7 @@ Session::flush();
 
 
 
+
     public function addUser(Request $request)
     {
         // return view('admin.add-user');
@@ -168,6 +178,33 @@ Session::flush();
         $user->save();
         return redirect()->route('login')->with('success', 'User registered successfully!!');
     }
+
+     public function update(Request $request)
+    {
+        // return view('admin.add-user');
+
+        $request->validate([
+            'name' => 'required|string', ///Note Validation issue in name
+            'email' => 'required|email',
+            'phone'=>'nullable|digits:10',
+            // 'password' => 'nullable|string|confirmed',
+            'status'=>'nullable|in:active,inactive',
+            'role' => 'required|string|in:admin,instructor,student'
+        ]);
+
+        // return $request;
+
+        User::where('id',Auth::user()->id)->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'role'=>$request->role,
+            'status'=>$request->status,
+            'password'=>Hash::make($request->password),
+        ]);
+     return redirect()->back()->with('success', 'User updated successfully!!');
+    }
+
     public function blank()
     {
         return view('admin.blank');
