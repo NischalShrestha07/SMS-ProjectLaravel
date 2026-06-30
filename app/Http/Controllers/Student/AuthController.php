@@ -61,4 +61,47 @@ Session::flush();
     return redirect()->route('login')->with('success','Logged out successfully!');
     }
 
+
+    public function users()
+    {
+        $users=User::where('role', 'student')->paginate(10);
+        return view('student.users',compact('users'));
+    }
+
+
+    public function create()
+    {
+        return view('student.add-user');
+    }
+
+
+    public function userDetailsShow($id)
+    {
+        $user=User::find($id);
+
+        return view('student.user-details',compact('user'));
+    }
+
+    public function addUser(Request $request)
+    {
+
+
+        $request->validate([
+            'name'=>'required|string',
+            'email'=>'nullable|email',
+            'phone'=>'nullable'
+        ]);
+
+
+        User::create([
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'phone'=>$request->phone,
+                'password'=>Hash::make($request->password),
+                'role'=>'student'
+            ]);
+
+        return redirect()->route('student.users')->with('success','User added successfully!');
+
+    }
 }

@@ -70,14 +70,18 @@ Route::middleware('role:instructor')->prefix('instructor')->name('instructor.')-
     Route::put('/profile/update', [Instructor\AuthController::class, 'updateProfile'])->name('profile.update');
 
     Route::get('/logout',[Instructor\AuthController::class,'logout'])->name('logout');
+    Route::get('/users', [Instructor\AuthController::class, 'users'])->name('users');
+    Route::get('/users/add', [Instructor\AuthController::class, 'add_user'])->name('add-user');
+    Route::post('/users/store', [Instructor\AuthController::class, 'addUser'])->name('addUser');
+
+    Route::get('/user-details', [Instructor\AuthController::class, 'userDetails'])->name('user-details');
+    Route::get('/user-details/{id}', [Instructor\AuthController::class, 'userDetailsShow'])->name('user-details.show');
 
 
 
 
 
-    Route::get('/users', [Admin\AuthController::class, 'users'])->name('users');
 
-    Route::get('/user-details', [Admin\AuthController::class, 'userDetails'])->name('user-details');
     Route::get('/tables', [Admin\AuthController::class, 'tables'])->name('tables');
     Route::get('/settings', [Admin\AuthController::class, 'settings'])->name('settings');
     Route::get('/forms', [Admin\AuthController::class, 'forms'])->name('forms');
@@ -97,8 +101,11 @@ Route::middleware('role:student')->prefix('student')->name('student.')->group(fu
 
 
     Route::get('/home', [Student\HomeController::class, 'home'])->name('home');
-     Route::get('/users', [Admin\AuthController::class, 'users'])->name('users');
+     Route::get('/users', [Student\AuthController::class, 'users'])->name('users');
+    Route::get('/users/add', [Student\AuthController::class, 'create'])->name('adduser');
 
+    Route::get('/user-details/{id}', [Student\AuthController::class, 'userDetailsShow'])->name('user-details.show');
+    Route::post('/add-user', [Student\AuthController::class, 'addUser'])->name('add_user');
 
 
          Route::get('/profile', [Student\AuthController::class, 'profile'])->name('profile');
@@ -117,7 +124,7 @@ Route::middleware('role:student')->prefix('student')->name('student.')->group(fu
     Route::get('/components', [Admin\AuthController::class, 'components'])->name('components');
     Route::get('/charts', [Admin\AuthController::class, 'charts'])->name('charts');
     Route::get('/alerts', [Admin\AuthController::class, 'alerts'])->name('alerts');
-    Route::get('/adduser', [Admin\AuthController::class, 'addUser'])->name('adduser');
+    // Route::get('/adduser', [Admin\AuthController::class, 'addUser'])->name('adduser');
     Route::get('/blank', [Admin\AuthController::class, 'blank'])->name('blank');
     Route::get('/modals', [Admin\AuthController::class, 'modals'])->name('modals');
 });

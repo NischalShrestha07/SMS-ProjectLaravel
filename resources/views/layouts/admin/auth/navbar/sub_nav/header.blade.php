@@ -47,8 +47,9 @@
                     <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <img class="avatar-img avatar-sm" src="{{ asset('admin_assets/images/avatar/avatar.jpg') }}"
-                            alt="Admin Hasan" />
-                        <span class="profile-name d-none d-sm-inline">Admin Hasan</span>
+                            alt="{{ Auth::user()->name }}" />
+                        <span class="profile-name d-none d-sm-inline">{{ Auth::user()->name }}</span>
+
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>

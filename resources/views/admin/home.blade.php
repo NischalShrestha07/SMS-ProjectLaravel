@@ -27,14 +27,14 @@
                 </div>
             </div>
 
-            <section class="row g-3 mt-1" aria-label="Dashboard metrics">
+              <section class="row g-3 mt-1" aria-label="Dashboard metrics">
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="metric-card metric-primary">
                         <div class="metric-top">
-                            <span class="metric-label">Revenue</span>
+                            <span class="metric-label">Admins</span>
                             <span class="metric-icon"><i class="bi bi-currency-dollar" aria-hidden="true"></i></span>
                         </div>
-                        <div class="metric-value">$48,240</div>
+                        <div class="metric-value">{{$adminCount}}</div>
                         <div class="metric-meta">
                             <span class="text-success">+12.5%</span>
                             <span>from last month</span>
@@ -45,10 +45,10 @@
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="metric-card metric-success">
                         <div class="metric-top">
-                            <span class="metric-label">Orders</span>
+                            <span class="metric-label">Instructors</span>
                             <span class="metric-icon"><i class="bi bi-bag-check" aria-hidden="true"></i></span>
                         </div>
-                        <div class="metric-value">1,284</div>
+                        <div class="metric-value">{{$instructorCount}}</div>
                         <div class="metric-meta">
                             <span class="text-success">+8.2%</span>
                             <span>new orders</span>
@@ -59,16 +59,17 @@
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="metric-card metric-warning">
                         <div class="metric-top">
-                            <span class="metric-label">Customers</span>
+                            <span class="metric-label">Students</span>
                             <span class="metric-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
                         </div>
-                        <div class="metric-value">8,742</div>
+                        <div class="metric-value">{{$studentCount}}</div>
                         <div class="metric-meta">
                             <span class="text-success">+5.1%</span>
                             <span>active users</span>
                         </div>
                     </article>
                 </div>
+
 
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="metric-card metric-danger">

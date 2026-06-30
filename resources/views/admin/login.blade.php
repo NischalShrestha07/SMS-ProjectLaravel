@@ -10,6 +10,9 @@
         @if (session('success'))
             <span class="bg-success text-white">{{ session('success') }}</span>
         @endif
+        @if (session('error'))
+            <span class="bg-danger text-white">{{ session('error') }}</span>
+        @endif
         <section class="auth-card">
             <a class="auth-brand" href="{{ route('home') }}"><span class="brand-icon"><i class="bi bi-grid-1x2-fill"
                         aria-hidden="true"></i></span><span><strong>adminHMD</strong><small>Sign

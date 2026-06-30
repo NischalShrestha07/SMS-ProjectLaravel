@@ -3,7 +3,7 @@
 @section('title', 'Index')
 
 @section('student_auth_content')
-<div class="admin-shell">
+<div class="student-shell">
 
 
     @include('layouts.student.auth.navbar.navbar')
@@ -27,14 +27,14 @@
                 </div>
             </div>
 
-            <section class="row g-3 mt-1" aria-label="Dashboard metrics">
+           <section class="row g-3 mt-1" aria-label="Dashboard metrics">
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="metric-card metric-primary">
                         <div class="metric-top">
-                            <span class="metric-label">Revenue</span>
+                            <span class="metric-label">Course</span>
                             <span class="metric-icon"><i class="bi bi-currency-dollar" aria-hidden="true"></i></span>
                         </div>
-                        <div class="metric-value">$48,240</div>
+                        <div class="metric-value">1234</div>
                         <div class="metric-meta">
                             <span class="text-success">+12.5%</span>
                             <span>from last month</span>
@@ -45,10 +45,10 @@
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="metric-card metric-success">
                         <div class="metric-top">
-                            <span class="metric-label">Orders</span>
+                            <span class="metric-label">Instructors</span>
                             <span class="metric-icon"><i class="bi bi-bag-check" aria-hidden="true"></i></span>
                         </div>
-                        <div class="metric-value">1,284</div>
+                        <div class="metric-value">{{$instructorCount}}</div>
                         <div class="metric-meta">
                             <span class="text-success">+8.2%</span>
                             <span>new orders</span>
@@ -59,17 +59,16 @@
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="metric-card metric-warning">
                         <div class="metric-top">
-                            <span class="metric-label">Customers</span>
+                            <span class="metric-label">Students</span>
                             <span class="metric-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
                         </div>
-                        <div class="metric-value">8,742</div>
+                        <div class="metric-value">{{$studentCount}}</div>
                         <div class="metric-meta">
                             <span class="text-success">+5.1%</span>
                             <span>active users</span>
                         </div>
                     </article>
                 </div>
-
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="metric-card metric-danger">
                         <div class="metric-top">
@@ -95,7 +94,7 @@
                                 <p class="text-muted mb-0">Monthly revenue compared with operational targets.
                                 </p>
                             </div>
-                            <a class="btn btn-light btn-sm" href="{{ route('admin.charts') }}">View Details</a>
+                            <a class="btn btn-light btn-sm" href="{{ route('student.charts') }}">View Details</a>
                         </div>
 
                         <div class="chart-bars" aria-label="Sales performance chart">
@@ -146,7 +145,7 @@
                 </div>
             </section>
 
-            <section class="panel mt-3">
+           <section class="panel mt-3">
                 <div class="panel-header">
                     <div>
                         <h2 class="h5 mb-1 section-title"><i class="bi bi-people" aria-hidden="true"></i><span>Recent
@@ -155,112 +154,54 @@
                     </div>
                     <a class="btn btn-outline-secondary btn-sm" href="{{ route('admin.users') }}">Manage Users</a>
                 </div>
-                <div class="table-responsive">
-                    <table class="table align-middle mb-0">
-                        <thead>
-                            <tr>
-                                <th scope="col">User</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Team</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Joined</th>
-                                <th scope="col" class="text-end">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-1.jpg"
-                                            alt="Sarah Ahmed">
-                                        <div>
-                                            <p class="fw-semibold mb-0">Sarah Ahmed</p>
-                                            <p class="text-muted small mb-0">sarah@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Admin</td>
-                                <td>Operations</td>
-                                <td><span class="badge text-bg-success">Active</span></td>
-                                <td>Jan 12, 2026</td>
-                                <td class="text-end"><a class="btn btn-light btn-sm"
-                                        href="{{ route('admin.user-details') }}">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-2.jpg"
-                                            alt="Rafi Khan">
-                                        <div>
-                                            <p class="fw-semibold mb-0">Rafi Khan</p>
-                                            <p class="text-muted small mb-0">rafi@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Manager</td>
-                                <td>Sales</td>
-                                <td><span class="badge text-bg-success">Active</span></td>
-                                <td>Feb 03, 2026</td>
-                                <td class="text-end"><a class="btn btn-light btn-sm"
-                                        href="{{ route('admin.user-details') }}">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-3.jpg"
-                                            alt="Nadia Islam">
-                                        <div>
-                                            <p class="fw-semibold mb-0">Nadia Islam</p>
-                                            <p class="text-muted small mb-0">nadia@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Editor</td>
-                                <td>Content</td>
-                                <td><span class="badge text-bg-warning">Pending</span></td>
-                                <td>Mar 18, 2026</td>
-                                <td class="text-end"><a class="btn btn-light btn-sm"
-                                        href="{{ route('admin.user-details') }}">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-4.jpg"
-                                            alt="Mina Torres">
-                                        <div>
-                                            <p class="fw-semibold mb-0">Mina Torres</p>
-                                            <p class="text-muted small mb-0">mina@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Viewer</td>
-                                <td>Finance</td>
-                                <td><span class="badge text-bg-secondary">Suspended</span></td>
-                                <td>Apr 07, 2026</td>
-                                <td class="text-end"><a class="btn btn-light btn-sm"
-                                        href="{{ route('admin.user-details') }}">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-5.jpg"
-                                            alt="Jon Oliver">
-                                        <div>
-                                            <p class="fw-semibold mb-0">Jon Oliver</p>
-                                            <p class="text-muted small mb-0">jon@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Analyst</td>
-                                <td>Data</td>
-                                <td><span class="badge text-bg-success">Active</span></td>
-                                <td>Apr 22, 2026</td>
-                                <td class="text-end"><a class="btn btn-light btn-sm"
-                                        href="{{ route('admin.user-details') }}">View</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                 <div class="table-responsive">
+                        <table class="table align-middle mb-0" id="usersTable" data-searchable-table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">User</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Joined</th>
+                                    <th scope="col" class="text-end">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $item)
+                                    <tr>
+
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                {{-- <img class="avatar-img avatar-sm"
+                                            src="{{ asset('admin_assets/images/avatar/avatar-1.jpg') }}"
+                                            alt="Sarah Ahmed" /> --}}
+                                                <div>
+                                                    <p class="fw-semibold mb-0">
+                                                        {{ $item->name }} </p>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{{ $item->email }} </td>
+                                        <td>{{ $item->phone }} </td>
+                                        <td>{{ $item->role }} </td>
+                                        <td>
+                                            <span class="badge text-bg-success">{{ $item->status }} </span>
+                                        </td>
+                                        <td>{{ $item->created_at }} </td>
+                                        <td class="text-end">
+                                            <a class="btn btn-light btn-sm"
+                                                href="{{ route('admin.user-details.show',$item->id) }}">View</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
             </section>
         </div>
     </main>

@@ -1,87 +1,48 @@
 <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
     <div class="sidebar-header">
-        <a class="brand-mark" href="{{ route('instructor.home') }}" aria-label="adminHMD dashboard">
-            <span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span>
-            <span class="brand-copy">
+        <a class="brand-mark d-flex align-items-center gap-3 text-decoration-none" href="{{ route('instructor.home') }}"
+            aria-label="Instructor dashboard">
+            <span class="brand-icon d-inline-flex align-items-center justify-content-center">
+                <i class="bi bi-grid-1x2-fill" aria-hidden="true"></i>
+            </span>
+            <span class="brand-copy d-flex flex-column">
                 <span class="brand-title">Instructor</span>
                 <span class="brand-subtitle">Instructor Panel</span>
             </span>
         </a>
     </div>
 
-    <nav class="sidebar-nav">
-        <a class="nav-link {{ request()->routeIs('instructor.home') ? 'active' : '' }}" href="{{ route('instructor.home') }}"
-            @if(request()->routeIs('instructor.home')) aria-current="page" @endif>
+    <nav class="sidebar-nav" aria-label="Instructor sidebar links">
+        <a class="nav-link {{ request()->routeIs('instructor.home') ? 'active' : '' }} d-flex align-items-center gap-3"
+            href="{{ route('instructor.home') }}" @if(request()->routeIs('instructor.home')) aria-current="page" @endif>
             <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
-            <span class="nav-text">Dashboard</span>
+            <span class="nav-text flex-grow-1">Dashboard</span>
         </a>
-        <a class="nav-link {{ request()->routeIs('admin.users') ? 'active' : '' }}" href="{{ route('admin.users') }}"
-            @if (request()->routeIs('admin.users')) aria-current="page" @endif>
-            <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
-            <span class="nav-text">Users</span>
-        </a>
-        <a class="nav-link {{ request()->routeIs('admin.adduser') ? 'active' : '' }}"
-            href="{{ route('admin.adduser') }}" @if (request()->routeIs('admin.adduser')) aria-current="page" @endif>
+
+        <a class="nav-link {{ request()->routeIs('instructor.users') ? 'active' : '' }} d-flex align-items-center gap-3"
+            href="{{ route('instructor.users') }}" @if (request()->routeIs('instructor.users')) aria-current="page" @endif>
             <span class="nav-icon"><i class="bi bi-person-plus" aria-hidden="true"></i></span>
-            <span class="nav-text">Add User</span>
+            <span class="nav-text flex-grow-1">Users</span>
         </a>
-        <a class="nav-link {{ request()->routeIs('instructor.profile') ? 'active' : '' }}"
+        <a class="nav-link {{ request()->routeIs('instructor.add-user') ? 'active' : '' }} d-flex align-items-center gap-3"
+            href="{{ route('instructor.add-user') }}" @if (request()->routeIs('instructor.add-user')) aria-current="page" @endif>
+            <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+            <span class="nav-text flex-grow-1">Add User</span>
+        </a>
+
+        <a class="nav-link {{ request()->routeIs('instructor.profile') ? 'active' : '' }} d-flex align-items-center gap-3"
             href="{{ route('instructor.profile') }}" @if (request()->routeIs('instructor.profile')) aria-current="page" @endif>
             <span class="nav-icon"><i class="bi bi-person-badge" aria-hidden="true"></i></span>
-            <span class="nav-text">Profile</span>
-        </a>
-        <a class="nav-link {{ request()->routeIs('admin.charts') ? 'active' : '' }}" href="{{ route('admin.charts') }}"
-            @if (request()->routeIs('admin.charts')) aria-current="page" @endif>
-            <span class="nav-icon"><i class="bi bi-bar-chart-line" aria-hidden="true"></i></span>
-            <span class="nav-text">Charts</span>
-        </a>
-        <a class="nav-link {{ request()->routeIs('admin.tables') ? 'active' : '' }}" href="{{ route('admin.tables') }}"
-            @if (request()->routeIs('admin.tables')) aria-current="page" @endif>
-            <span class="nav-icon"><i class="bi bi-table" aria-hidden="true"></i></span>
-            <span class="nav-text">Tables</span>
-        </a>
-        <a class="nav-link {{ request()->routeIs('admin.forms') ? 'active' : '' }}" href="{{ route('admin.forms') }}"
-            @if (request()->routeIs('admin.forms')) aria-current="page" @endif>
-            <span class="nav-icon"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i></span>
-            <span class="nav-text">Forms</span>
-        </a>
-        <a class="nav-link {{ request()->routeIs('admin.components') ? 'active' : '' }}"
-            href="{{ route('admin.components') }}" @if (request()->routeIs('admin.components')) aria-current="page"
-            @endif>
-            <span class="nav-icon"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></span>
-            <span class="nav-text">Components</span>
-        </a>
-        <a class="nav-link {{ request()->routeIs('admin.alerts') ? 'active' : '' }}" href="{{ route('admin.alerts') }}"
-            @if (request()->routeIs('admin.alerts')) aria-current="page" @endif>
-            <span class="nav-icon"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i></span>
-            <span class="nav-text">Alerts</span>
-        </a>
-        <a class="nav-link {{ request()->routeIs('admin.modals') ? 'active' : '' }}" href="{{ route('admin.modals') }}"
-            @if (request()->routeIs('admin.modals')) aria-current="page" @endif>
-            <span class="nav-icon"><i class="bi bi-window-stack" aria-hidden="true"></i></span>
-            <span class="nav-text">Modals</span>
-        </a>
-        <a class="nav-link {{ request()->routeIs('admin.settings') ? 'active' : '' }}"
-            href="{{ route('admin.settings') }}" @if (request()->routeIs('admin.settings')) aria-current="page" @endif>
-            <span class="nav-icon"><i class="bi bi-gear" aria-hidden="true"></i></span>
-            <span class="nav-text">Settings</span>
-        </a>
-        <a class="nav-link {{ request()->routeIs('admin.blank') ? 'active' : '' }}" href="{{ route('admin.blank') }}"
-            @if (request()->routeIs('admin.blank')) aria-current="page" @endif>
-            <span class="nav-icon"><i class="bi bi-file-earmark" aria-hidden="true"></i></span>
-            <span class="nav-text">Blank Page</span>
+            <span class="nav-text flex-grow-1">Profile</span>
         </a>
     </nav>
 
-    <div class="sidebar-user">
+    <div class="sidebar-footer d-flex align-items-center gap-3">
         <img class="avatar-img avatar-md sidebar-user-avatar" src="{{ asset('admin_assets/images/avatar/avatar.jpg') }}"
-            alt="Instructor Hasan" />
-        <strong>Instructor Hasan</strong>
-        <small>Active Workspace</small>
-    </div>
-
-    <div class="sidebar-footer">
-        <span class="status-dot"></span>
-        <span class="sidebar-footer-text">System running smoothly</span>
+            alt="{{ Auth::user()->name }}" />
+        <div class="d-flex flex-column overflow-hidden">
+            <strong class="text-truncate">{{ Auth::user()->name }}</strong>
+            <small class="text-truncate">Active Workspace</small>
+        </div>
     </div>
 </aside>

@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{ asset('admin_assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin_assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('admin_assets/css/style.css') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
 </head>
 
 <body class="auth-body">

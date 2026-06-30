@@ -30,6 +30,14 @@ class AuthController extends Controller
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             //login
+            $status=Auth::user()->status;
+
+            if($status=='inactive'){
+                Auth::logout();
+                return redirect()->route('login')->withInput()->with('error', 'Your account is inactive. Please contact the administrator.');
+            }
+
+
             $role = Auth::user()->role;
             // return $role;
 
@@ -41,7 +49,7 @@ class AuthController extends Controller
                 return redirect()->route('student.home');
             }
         }
-        return redirect()->route('login')->with('error', 'Invalid Credential!! Please Try Again!');
+        return redirect()->route('login')->withInput()->with('error', 'Invalid Credential!! Please Try Again!');
     }
 
 
@@ -156,11 +164,12 @@ Session::flush();
     public function addUser(Request $request)
     {
         // return view('admin.add-user');
+        // return $request;
 
         $request->validate([
             'name' => 'required|string', ///Note Validation issue in name
             'email' => 'required|email',
-            'phone'=>'nullable|digits:10',
+            'phone'=>'nullable|digits:10|regex:/^9[78]\d{8}$/',
             'password' => 'required|string|confirmed',
             'status'=>'nullable|in:active,inactive',
             'role' => 'required|string|in:admin,instructor,student'
@@ -172,10 +181,14 @@ Session::flush();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        $user->status = $request->status;
+        $user->status = $request->status  ?'active':'inactive';
         $user->role = $request->role;
         $user->password = Hash::make($request->password);
         $user->save();
+
+
+
+
         return redirect()->route('login')->with('success', 'User registered successfully!!');
     }
 
